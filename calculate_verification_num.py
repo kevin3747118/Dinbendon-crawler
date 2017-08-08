@@ -3,8 +3,10 @@ import json
 from bs4 import BeautifulSoup
 import re
 
+dinbendon_url = 'https://dinbendon.net/do/login'
+dinbendon_res = requests.get(dinbendon_url)
+
 def count_verification_num():
-    dinbendon_res = requests.get('https://dinbendon.net/do/login')
     soup = BeautifulSoup(dinbendon_res.text , 'lxml')
 
     verif_code = str(soup.find_all('td' , {'class' : 'alignRight'}))
@@ -18,7 +20,21 @@ def count_verification_num():
             num_b = int(i)
 
     verif = num_a + num_b
-
     return verif
 
 print(count_verification_num())
+
+
+
+def get_shop_list():
+    headers = {'Content-Type': 'application/json'}
+    payload = {
+        'username' : 'JamesTsai',
+        'password' : '70553216',
+        'result' : count_verification_num(),
+        'submit' : '%E7%99%BB%E5%85%A5'
+    }
+    r = requests.get('https://dinbendon.net/do/login' , )
+    return r.text
+
+print(get_shop_list())
