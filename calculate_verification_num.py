@@ -29,10 +29,10 @@ print(count_verification_num())
 def get_shop_list():
     headers = {'Content-Type': 'application/json'}
     payload = {
-        'username' : 'JamesTsai',
-        'password' : '70553216',
+        'username' : '',
+        'password' : '7',
         'result' : count_verification_num(),
-        'submit' : '%E7%99%BB%E5%85%A5'
+        'submit' : '%E7%'
     }
     r = requests.get('https://dinbendon.net/do/login' , )
     return r.text
