@@ -5,8 +5,8 @@ from bs4 import BeautifulSoup
 import pymssql
 import re
 
-cnxn = pymssql.connect(server='10.10.20.5', user='bi_agent',
-                       password='abcd-1234',  database='MIS_OPEN')
+cnxn = pymssql.connect(server='', user='',
+                       password='',  database='')
 cursor = cnxn.cursor()
 
 
@@ -47,12 +47,12 @@ def product_name_price(url):
 
     for j in soup.find_all('tr' , {'class' : 'odd'}):
         c = j.text.split('\n')
-        if 'ºô¤Íµû»ù' not in c:
-            if '¦a§}' not in c :
-                if '¶Ç¯u' not in c:
-                    if '©±®a¸Ô²Ó»¡©ú' not in c:
-                        if '©±®aªA°ÈÃş«¬' not in c:
-                            if '³Ì«á­×§ï¤é' not in c:
+        if 'ç¶²å‹è©•åƒ¹' not in c:
+            if 'åœ°å€' not in c :
+                if 'å‚³çœŸ' not in c:
+                    if 'åº—å®¶è©³ç´°èªªæ˜' not in c:
+                        if 'åº—å®¶æœå‹™é¡å‹' not in c:
+                            if 'æœ€å¾Œä¿®æ”¹æ—¥' not in c:
                                 a += 1
                                 if a == 1:
                                     cursor.execute("""INSERT INTO  [dbo].[DIN_BEN_DON_PRODUCT] (Shop_ID , Product_Name , Product_Price) VALUES (%s , %s , %s) """,(shop_id, c[2], c[5]))
