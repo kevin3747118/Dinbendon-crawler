@@ -25,7 +25,6 @@ import re
 # shop_id = int(str(re.findall('shop=.+' , url)).replace('shop=' , '').replace('[\'' , '').replace('\']' , ''))
 # print(shop_id)
 
-import requests
 
 res = requests.get('https://dinbendon.net/do/idine?shop=277494')
 print(res.text)

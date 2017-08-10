@@ -1,5 +1,3 @@
-#-*- coding: big5 -*-
-
 import requests
 from bs4 import BeautifulSoup
 import pymssql
