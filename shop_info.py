@@ -14,10 +14,12 @@ cursor = cnxn.cursor()
 #post = requests.get('https://dinbendon.net/do/idine')
 
 #url = str('d')
-# url = 'https://dinbendon.net/do/idine?shop=277494'
-# print(str(re.findall('shop=.+' , url)).replace('shop=' , ''))
-# shop_id = int(str(re.findall('shop=.+' , url)).replace('shop=' , '').replace('[\'' , '').replace('\']' , ''))
-# print(shop_id)
+url = 'https://dinbendon.net/do/idine?shop=209534'
+
+print(url)
+print(str(re.findall('shop=.+' , url)).replace('shop=' , ''))
+shop_id = int(str(re.findall('shop=.+' , url)).replace('shop=' , '').replace('[\'' , '').replace('\']' , ''))
+print(shop_id)
 # print(url)
 
 
@@ -74,6 +76,8 @@ def product_name_price(url):
 
 # shop_info
 def shop_info(url):
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, 'lxml')
     shop_content = soup.find_all('td' , {'class' : 'content'})
     columns = []
 
@@ -84,6 +88,7 @@ def shop_info(url):
     chose = (0 ,2, 3, 4, 6, 7)
     for j in chose:
         info.append(columns[j])
+        print(info)
     cursor.execute("""INSERT INTO  [dbo].[DIN_BEN_DON] (Shop_ID , Shop_Name , Shop_Content , Shop_Address , Shop_TEL , Shop_City , Shop_Type) VALUES (%s , %s , %s , %s , %s , %s , %s )""",(shop_id, info[0], info[1], info[2], info[3], info[4], info[5]))
     cnxn.commit()
     #print(info[3])
@@ -91,7 +96,7 @@ def shop_info(url):
 
 
 if __name__ == '__main__':
-    search = input("Enter the restaurant URL you want to search: ")
+    # search = input("Enter the restaurant URL you want to search: ")
     # search = url
-    product_name_price(search)
-    shop_info(search)
+    # product_name_price(url)
+    shop_info(url)
