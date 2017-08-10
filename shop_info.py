@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import pymssql
 import re
 
-cnxn = pymssql.connect(server='10.10.20.5', user='bi_agent',
-                       password='abcd-1234',  database='MIS_OPEN')
+cnxn = pymssql.connect(server='', user='',
+                       password='',  database='')
 cursor = cnxn.cursor()
 
 
