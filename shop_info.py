@@ -59,7 +59,7 @@ def product_name_price(url):
     -*- list comprehension -*- 
     目地 : (餐點, 價格)
     
-    step1 : 沒意外的話，p_name_lst跟p_price_lst的長度會一至
+    step1 : 沒意外的話，p_name_lst跟p_price_lst的長度會一致
     step2 : for loop任意一個list的長度
     step3 : 用index的方式取參點跟價格list裡面的值，做成 [(x1, y1), (x2, y2), ... , (xn, yn)]；
             1、2及n為step 2 for loop的index
