@@ -44,8 +44,7 @@ def product_name_price(url):
     #         del c
     # print('ok')
 
-    ### odd
-    a = 0
+    ### 程式修改開始
     p_name_lst = list()
     for p_name in soup.find_all('td' , {'style' : 'width: 10em;'}):
         correct_pname = p_name.text.replace('♨', '').replace('⌂', '').replace('\n', '')
@@ -69,7 +68,7 @@ def product_name_price(url):
 
     cursor.executemany(sql_command, p_name_price)
     cnxn.commit()
-    
+    ### 程式修改結束
     # print(p_name_price)
 
         # c = j.text.split('\n')
